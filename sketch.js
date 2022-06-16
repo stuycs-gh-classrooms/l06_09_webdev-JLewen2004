@@ -4,12 +4,6 @@ var second;
 var hangle;
 var mangle;
 var sangle;
-var xh;
-var xm;
-var xs;
-var yh;
-var ym;
-var ys;
 var offset;
 var xn;
 var yn;
@@ -73,27 +67,23 @@ function draw() {
   }
   stroke(0);
   strokeWeight(5);
-  line(width/2,height/2,width/2,0);
-  line(width/2,height/2,0,height/2);
-  line(width/2,height/2,width/2,height);
   line(width/2,height/2,width,height/2);strokeWeight(5);
-  stroke(158, 177, 227);
   line(width/2,height/2,width/2,30);
   line(width/2,height/2,30,height/2);
   line(width/2,height/2,width/2,height-30);
   line(width/2,height/2,width-30,height/2);
   stroke(0);
   strokeWeight(1);
-  drawHand(100.0);
+  Hand(100.0);
 }
 
-function timeToAngle(){
+function time(){
   sangle=radians((360*(second/60.0))-90);
   mangle=radians((360*(minute/60.0))-90)+(sangle/60);
   hangle=radians((360*(hour/12.0))-90)+(mangle/12);
 }
 
-function drawHand(amplitute){
+function Hand(amplitute){
   amplitute=100.0;
   xh = (cos(hangle) * amplitute + offset);
   yh = (sin(hangle) * amplitute + offset);
@@ -113,13 +103,9 @@ function drawHand(amplitute){
   stroke(0);
 }
 
-function clockFace(){
-  fill(158, 177, 227);
-  circle(200,200,400);
-}
 
 function updateTime(){
-  hour=d.getHours();
-  minute=d.getMinutes();
-  second=d.getSeconds();
+  hour=d.Hours();
+  minute=d.Minutes();
+  second=d.Seconds();
 }
